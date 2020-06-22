@@ -31,6 +31,22 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 
 def score(dice)
   # You need to write this method
+  final_score = 0
+  occurence_1s = dice.find_all{ |i| i == 1 }.count
+  occurence_2s = dice.find_all{ |i| i == 2 }.count
+  occurence_3s = dice.find_all{ |i| i == 3 }.count
+  occurence_4s = dice.find_all{ |i| i == 4 }.count
+  occurence_5s = dice.find_all{ |i| i == 5 }.count
+  occurence_6s = dice.find_all{ |i| i == 6 }.count
+  final_score += 1000 * (occurence_1s / 3)
+  final_score += 200 * (occurence_2s / 3)
+  final_score += 300 * (occurence_3s / 3)
+  final_score += 400 * (occurence_4s / 3)
+  final_score += 500 * (occurence_5s / 3)
+  final_score += 600 * (occurence_6s / 3)
+  final_score += 100 * (occurence_1s % 3)
+  final_score += 50  * (occurence_5s % 3)
+  final_score
 end
 
 class AboutScoringProject < Neo::Koan
